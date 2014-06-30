@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>    
+    
+<!DOCTYPE configuration PUBLIC  "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<typeAliases>
+		<!-- 同sqlmap中相对应，sqlmap中的namespace对应代码中的 
+		<typeAlias alias="User" type="com.hoolai.basketball.domain.user.User"/>
+		<typeAlias alias="SysBackTask" type="com.hoolai.basketball.domain.assist.SysBackTask"></typeAlias>-->
+		<typeAlias alias="Register" type="com.bj.habit.domain.dto.Register"/>
+	</typeAliases>
+	<mappers>
+		<!-- 需要映射的xml文件 
+		<mapper resource="com/hoolai/basketball/domain/user/sqlmap/User.xml"/>
+		<mapper resource="com/hoolai/basketball/domain/assist/sqlmap/SysBackTask.xml"/>-->
+		<mapper resource="com/bj/habit/domain/dto/sqlmap/Register.xml" />
+	</mappers>
+</configuration>  

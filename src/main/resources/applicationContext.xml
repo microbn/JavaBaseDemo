@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans.xsd
+           http://www.springframework.org/schema/tx
+    	   http://www.springframework.org/schema/tx/spring-tx.xsd
+           http://www.springframework.org/schema/context
+       	   http://www.springframework.org/schema/context/spring-context.xsd">
+	<context:annotation-config />
+	<context:component-scan base-package="com.bj.habit" />
+	
+	<bean id="writedataSource" class="org.apache.commons.dbcp.BasicDataSource">
+   	<property name="driverClassName" value="com.mysql.jdbc.Driver"></property>
+   	<property name="url" value="jdbc:mysql://127.0.0.1:3306/mydb?characterEncoding=utf-8"></property>
+   	<property name="username" value="root"></property>
+   	<property name="password" value="root"></property>
+   	<property name="maxActive" value="100"></property>
+   	<property name="maxIdle" value="30"></property>
+   	<property name="maxWait" value="500"></property>
+   	<property name="defaultAutoCommit" value="true"></property>
+   </bean>
+   
+   <bean id="writesqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+   	<property name="configLocation" value="classpath:mybatis.cfg.xml"></property>
+   	<property name="dataSource" ref="writedataSource"></property>
+   </bean>
+   
+   <bean id="writesqlSessionTemplate" class="org.mybatis.spring.SqlSessionTemplate">
+   	<constructor-arg index="0" ref="writesqlSessionFactory"></constructor-arg>
+   </bean>
+   
+   <bean id="readdataSource" class="org.apache.commons.dbcp.BasicDataSource">
+   	<property name="driverClassName" value="com.mysql.jdbc.Driver"></property>
+   	<property name="url" value="jdbc:mysql://127.0.0.1:3306/mydb?characterEncoding=utf-8"></property>
+   	<property name="username" value="root"></property>
+   	<property name="password" value="root"></property>
+   	<property name="maxActive" value="100"></property>
+   	<property name="maxIdle" value="30"></property>
+   	<property name="maxWait" value="500"></property>
+   	<property name="defaultAutoCommit" value="true"></property>
+   </bean>
+   
+   <bean id="readsqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+   	<property name="configLocation" value="classpath:mybatis.cfg.xml"></property>
+   	<property name="dataSource" ref="readdataSource"></property>
+   </bean>
+   
+   <bean id="readsqlSessionTemplate" class="org.mybatis.spring.SqlSessionTemplate">
+   	<constructor-arg index="0" ref="readsqlSessionFactory"></constructor-arg>
+   </bean>
+</beans>
