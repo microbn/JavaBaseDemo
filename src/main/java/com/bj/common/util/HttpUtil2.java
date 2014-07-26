@@ -22,26 +22,26 @@ public class HttpUtil2 {
     public static String post(String url){
         HttpClient client = new DefaultHttpClient();
         HttpPost post = new HttpPost(url);
-        JSONObject requestJson = null;
        
         String rs = null;
-        try{
-            StringEntity entity = new StringEntity(requestJson.toString());
-            entity.setContentEncoding("UTF-8");
-            entity.setContentType("application/json");
-            post.setEntity(entity);
-
-            HttpResponse response = client.execute(post);
-            if(response.getStatusLine().getStatusCode()== HttpStatus.SC_OK){
-                HttpEntity httpEntity = response.getEntity();
-                rs = EntityUtils.toString(httpEntity);
-            }
-
-        }catch (Exception e){
-            System.out.println("exception:"+e.getMessage());
-            System.out.println("detail:"+e);
-            log.error("postMessageException:"+e.getMessage(),e);
-        }
+//        JSONObject requestJson = null;
+//        try{
+//            StringEntity entity = new StringEntity(requestJson.toString());
+//            entity.setContentEncoding("UTF-8");
+//            entity.setContentType("application/json");
+//            post.setEntity(entity);
+//
+//            HttpResponse response = client.execute(post);
+//            if(response.getStatusLine().getStatusCode()== HttpStatus.SC_OK){
+//                HttpEntity httpEntity = response.getEntity();
+//                rs = EntityUtils.toString(httpEntity);
+//            }
+//
+//        }catch (Exception e){
+//            System.out.println("exception:"+e.getMessage());
+//            System.out.println("detail:"+e);
+//            log.error("postMessageException:"+e.getMessage(),e);
+//        }
         return rs;
     }
 
